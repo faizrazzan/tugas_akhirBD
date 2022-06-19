@@ -40,5 +40,3 @@ class JenisMakananModel:
         self.connection.commit()
 
 
-
-

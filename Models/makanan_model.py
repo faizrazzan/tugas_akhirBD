@@ -6,7 +6,7 @@ class MakananModel:
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="crystal",
+            passwd="",
             database="db_makanan"
         )
 

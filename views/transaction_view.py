@@ -1,4 +1,5 @@
 from Models import transaction_model, makanan_model
+from prettytable import PrettyTable
 
 
 class TransactionView:
@@ -62,3 +63,10 @@ class TransactionView:
             print("Thank you for your purchase")
         else:
             print("Thank you")
+
+    def detail(self):
+        x = PrettyTable()
+        x.field_names = ["ID Transaksi", "Tgl Transaksi", "Total Pembayaran", "Jumlah Pesanan", "Nama Makanan", "Nama Jenis Makanan"]
+        for data in self.transaction_model.detail_transaksi():
+            x.add_row(data)
+        print(x)

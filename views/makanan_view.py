@@ -1,5 +1,6 @@
 import mysql.connector
 from Models import makanan_model
+from prettytable import PrettyTable
 
 # Create mysql connection
 connection = mysql.connector.connect(
@@ -59,5 +60,8 @@ class MakananView:
         self.model.delete(id_makanan)
 
     def _show(self):
+        x = PrettyTable()
+        x.field_names = ["ID Makanan", "ID Jenis Makanan", "Nama Makanan", "Harga Makanan", "Stok"]
         for data in self.model.get_data():
-            print("{}. |{} | {} | {} | {} |".format(data[0], data[1], data[2], data[3],data[4]))
+            x.add_row(data)
+        print(x)

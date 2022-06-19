@@ -48,7 +48,6 @@ class JenisMakananView:
         for data in self.model.get_data():
             x.add_row(data)
         print(x)
-        for data in self.model.get_data():
-            print("{}. {}".format(data[0], data[1]))
+
 
 

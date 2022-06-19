@@ -16,6 +16,7 @@ class MenuView:
             print("1. Jenis Makanan")
             print("2. Makanan")
             print("3. Transaksi")
+            print("4. Detail Transaksi")
             match int(input("Masukkan Pilihan Anda : ")):
                 case 1:
                     self.jenisView.display()
@@ -23,5 +24,7 @@ class MenuView:
                     self.makananView.display()
                 case 3:
                     self.transactionView.buy()
+                case 4:
+                    self.transactionView.detail()
                 case _:
                     print("Masukkan Tidak Benar")
