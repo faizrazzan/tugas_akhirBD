@@ -58,6 +58,7 @@ class TransactionView:
             for makanan in makanan_list:
                 if makanan[0] in cart_dict:
                     self.transaction_model.insert_detail([self.transaction_model.get_data()[-1][0], makanan[0], cart_dict[makanan[0]]])
+                    self.transaction_model.reduce_stock([makanan[0], cart_dict[makanan[0]]])
             print("Thank you for your purchase")
         else:
             print("Thank you")

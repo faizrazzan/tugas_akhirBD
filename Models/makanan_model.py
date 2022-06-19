@@ -6,7 +6,7 @@ class MakananModel:
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="",
+            passwd="crystal",
             database="db_makanan"
         )
 
@@ -30,5 +30,11 @@ class MakananModel:
         query = "UPDATE makanan SET ID_JENIS_MAKANAN={},NAMA_MAKANAN='{}',HARGA_MAKANAN={},STOK_MAKANAN={} WHERE " \
                 "ID_MAKANAN={}". \
             format(data[0], data[1], data[2], data[3], data[4])
+        cursor.execute(query)
+        self.connection.commit()
+
+    def  reduce_stock(self, data):
+        cursor = self.connection.cursor()
+        query = "UPDATE makanan SET STOK_MAKANAN = STOK_MAKANAN - {} WHERE ID_MAKANAN = {}".format(data[2], data[1])
         cursor.execute(query)
         self.connection.commit()

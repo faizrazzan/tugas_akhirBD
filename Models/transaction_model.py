@@ -6,7 +6,7 @@ class TrxModel:
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="",
+            passwd="crystal",
             database="db_makanan"
         )
 
@@ -19,8 +19,9 @@ class TrxModel:
 
     def reduce_stock(self, data):
         cursor = self.connection.cursor()
-        query = "UPDATE makanan SET STOK_MAKANAN = STOK_MAKANAN - {} WHERE ID_MAKANAN = {}".format(data[2], data[1])
+        query = "UPDATE makanan SET STOK_MAKANAN = STOK_MAKANAN - {} WHERE ID_MAKANAN = {}".format(data[1], data[0])
         cursor.execute(query)
+        print(cursor.statement)
         self.connection.commit()
 
     def insert(self, data):
