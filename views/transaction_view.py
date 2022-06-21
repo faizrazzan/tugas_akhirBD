@@ -35,8 +35,13 @@ class TransactionView:
             elif choice == len(makanan_list) + 1:
                 self.show_cart(cart_dict)
             elif 0 < choice <= len(makanan_list):
+                current_stock = makanan_list[choice - 1][4]
+                print("Current stock: {}".format(current_stock))
                 print("How many {} do you want to buy?".format(makanan_list[choice - 1][2]))
                 qty = int(input(">> "))
+                if qty > current_stock:
+                    print("Sorry, we don't have enough stock")
+                    continue
                 cart_dict[makanan_list[choice - 1][0]] = qty
             else:
                 print("Invalid choice")
