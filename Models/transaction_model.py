@@ -21,7 +21,6 @@ class TrxModel:
         cursor = self.connection.cursor()
         query = "UPDATE makanan SET STOK_MAKANAN = STOK_MAKANAN - {} WHERE ID_MAKANAN = {}".format(data[1], data[0])
         cursor.execute(query)
-        print(cursor.statement)
         self.connection.commit()
 
     def insert(self, data):

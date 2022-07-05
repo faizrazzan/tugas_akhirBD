@@ -37,7 +37,7 @@ class TransactionView:
             elif 0 < choice <= len(makanan_list):
                 current_stock = makanan_list[choice - 1][4]
                 print("Current stock: {}".format(current_stock))
-                print("How many {} do you want to buy?".format(makanan_list[choice - 1][2]))
+                print("Berapa banyak {} yang ingin dibeli?".format(makanan_list[choice - 1][2]))
                 qty = int(input(">> "))
                 if qty > current_stock:
                     print("Sorry, we don't have enough stock")
@@ -70,8 +70,9 @@ class TransactionView:
             print("Thank you")
 
     def detail(self):
-        x = PrettyTable()
-        x.field_names = ["ID Transaksi", "Tgl Transaksi", "Total Pembayaran", "Jumlah Pesanan", "Nama Makanan", "Nama Jenis Makanan"]
         for data in self.transaction_model.detail_transaksi():
+            x = PrettyTable()
+            x.field_names = ["ID Transaksi", "Tgl Transaksi", "Total Pembayaran", "Jumlah Pesanan", "Nama Makanan",
+                             "Nama Jenis Makanan"]
             x.add_row(data)
-        print(x)
+            print(x)
