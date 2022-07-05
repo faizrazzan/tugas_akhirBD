@@ -6,7 +6,7 @@ class TrxModel:
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="",
+            passwd="crystal",
             database="db_makanan"
         )
 
@@ -38,10 +38,20 @@ class TrxModel:
         cursor.execute(query)
         self.connection.commit()
 
-
-    def detail_transaksi(self):
+    def detail_transaksi(self, id):
         cursor = self.connection.cursor()
-        query = "SELECT * FROM daftartransaksi"
+        query = """SELECT
+            makanan.NAMA_MAKANAN,
+            makanan.HARGA_MAKANAN,
+            mengelola.qty
+        FROM
+            mengelola
+        INNER JOIN
+            makanan
+        ON
+            mengelola.ID_MAKANAN = makanan.ID_MAKANAN
+        WHERE
+            mengelola.ID_TRANSAKSI = {}""".format(id)
         cursor.execute(query)
         result = cursor.fetchall()
         return result

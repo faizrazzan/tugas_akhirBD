@@ -70,9 +70,16 @@ class TransactionView:
             print("Thank you")
 
     def detail(self):
-        for data in self.transaction_model.detail_transaksi():
+        for data in self.transaction_model.get_data():
             x = PrettyTable()
-            x.field_names = ["ID Transaksi", "Tgl Transaksi", "Total Pembayaran", "Jumlah Pesanan", "Nama Makanan",
-                             "Nama Jenis Makanan"]
+            x.field_names = ["ID Transaksi", "Tgl Transaksi", "Total Pembayaran", "Jumlah Pesanan"]
             x.add_row(data)
             print(x)
+
+            for mmk in self.transaction_model.detail_transaksi(data[0]):
+                x = PrettyTable()
+                x.field_names = ["Nama Makanan", "Harga", "Jumlah"]
+                x.add_row(mmk)
+                print(x)
+            print()
+            print()
